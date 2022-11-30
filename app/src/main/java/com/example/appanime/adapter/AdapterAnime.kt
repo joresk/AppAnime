@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso
 class AdapterAnime(private val parentActivity: AppCompatActivity,
                    private val animes: List<Data>
 ): RecyclerView.Adapter<AdapterAnime.CustomViewHolder>() {
+    var onItemClick : ((Data) -> Unit)? = null
       inner class CustomViewHolder(view: View):RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -26,9 +27,12 @@ class AdapterAnime(private val parentActivity: AppCompatActivity,
         val view = holder.itemView
         val name = view.findViewById<TextView>(R.id.nameAnime)
         val image = view.findViewById<ImageView>(R.id.imageAnime)
-
         name.text = anime.title
         Picasso.get().load(anime.images.jpg.imageUrl).into(image)
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(anime)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -7,32 +7,35 @@
     android:padding="8dp"
     tools:context=".MainActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <SearchView
         android:id="@+id/searchInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/btnSearch"
+        android:layout_margin="8dp"
+        android:queryHint="Buscar Anime"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/search"
+        android:queryBackground="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/searchInputEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:hint="Ejemplo: Bleach" />
-    </com.google.android.material.textfield.TextInputLayout>
+    </SearchView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSearch"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/carousel"
+        tools:listitem="@layout/carousel_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buscar"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@+id/searchInputLayout"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:scrollbars="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/searchInputLayout" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchInputLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/animeRecyclerView"
@@ -41,7 +44,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/carousel"
         tools:layout_editor_absoluteX="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
